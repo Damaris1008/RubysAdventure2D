@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     Animator animator;
 
+    bool broken = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,12 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //If the robot has been repaired, it will stop moving
+        if(!broken)
+        {
+            return;
+        }
+
         timer -= Time.deltaTime;
         if(timer < 0)
         {
@@ -59,5 +66,14 @@ public class EnemyController : MonoBehaviour
         {
             controller.ChangeHealth(-1);
         }
+    }
+
+    //Public because we want to call it from elsewhere like the projectile script
+    public void Fix()
+    {
+        broken = false;
+        //Setting rigidbody2D.simulated to false makes the system to take not into consideration the object for collisions
+        GetComponent<Rigidbody2D>().simulated = false;
+        animator.SetTrigger("Fixed");
     }
 }

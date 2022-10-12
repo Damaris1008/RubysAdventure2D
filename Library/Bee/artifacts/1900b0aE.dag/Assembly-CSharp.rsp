@@ -321,7 +321,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
--r:"C:/Users/damag/Desktop/GENERAL/UnityProjects/RubysAdventure2D/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll"
+-r:"C:/Users/damag/Desktop/GENERAL/UnityProjects/RubysAdventure/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.PixelPerfect.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.PixelPerfect.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.2D.Sprite.Editor.ref.dll"
@@ -342,6 +342,7 @@
 "Assets/Scripts/DamageZone.cs"
 "Assets/Scripts/EnemyController.cs"
 "Assets/Scripts/HealthCollectible.cs"
+"Assets/Scripts/Projectile.cs"
 "Assets/Scripts/RubyController.cs"
 -langversion:9.0
 
