@@ -59,7 +59,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2d.position = position;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         RubyController controller = other.gameObject.GetComponent<RubyController>();
 

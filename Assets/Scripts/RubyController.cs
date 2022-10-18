@@ -86,7 +86,7 @@ public class RubyController : MonoBehaviour
 
         //This assures that the currentHealth will never be less than 0 or greater than maxHealth
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UnityEngine.Debug.Log(currentHealth + "/" + maxHealth);
+        UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
 
     void Launch()
