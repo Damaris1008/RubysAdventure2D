@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
 
     Rigidbody2D rigidbody2d;
 
+    public ParticleSystem hitEffect;
+
     // Awake is called immediately when the object instantiates (before launch, in this case)
     void Awake()
     {
@@ -28,7 +30,10 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        Instantiate(hitEffect, transform.position, transform.rotation);
+
         EnemyController e = other.collider.GetComponent<EnemyController>();
+        
         if (e != null)
         {
             e.Fix();
