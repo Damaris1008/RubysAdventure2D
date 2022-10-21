@@ -5,7 +5,7 @@ using UnityEngine;
 public class RubyController : MonoBehaviour
 {
     //As this variable is public, it will appear in the Unity Inspector window of Ruby
-    public float speed = 3.0f;
+    public float speed = 3.5f;
     
     public int maxHealth = 5;
     int currentHealth;
@@ -24,12 +24,19 @@ public class RubyController : MonoBehaviour
 
     public GameObject projectilePrefab;
 
+    AudioSource audioSource;
+
+    public AudioClip hitAudio;
+    public AudioClip launchProjectileAudio;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,6 +52,10 @@ public class RubyController : MonoBehaviour
         {
             lookDirection.Set(move.x, move.y);
             lookDirection.Normalize();
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
                 
         //We are sending the variables to the animator
@@ -80,6 +91,9 @@ public class RubyController : MonoBehaviour
                 return;
                 
             animator.SetTrigger("Hit");
+            Debug.Log("hola");
+            PlaySound(hitAudio, 1.0f);
+            Debug.Log("terminado");
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }
@@ -96,8 +110,13 @@ public class RubyController : MonoBehaviour
 
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
-
+        PlaySound(launchProjectileAudio, 1.0f);
         animator.SetTrigger("Launch");
         
+    }
+
+    public void PlaySound(AudioClip clip, float volume)
+    {
+        audioSource.PlayOneShot(clip, volume);
     }
 }

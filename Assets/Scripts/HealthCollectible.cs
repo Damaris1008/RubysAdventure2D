@@ -7,6 +7,8 @@ public class HealthCollectible : MonoBehaviour
     
     public ParticleSystem healEffect;
 
+    public AudioClip collectedClip;
+
     void OnTriggerEnter2D(Collider2D other) 
     {
         RubyController rubyController = other.GetComponent<RubyController>();
@@ -19,6 +21,7 @@ public class HealthCollectible : MonoBehaviour
                 Instantiate(healEffect, other.gameObject.transform.position + other.gameObject.transform.up * 0.5f, other.gameObject.transform.rotation);
                 rubyController.ChangeHealth(1);
                 Destroy(gameObject);
+                rubyController.PlaySound(collectedClip, 1.0f);
             }
 
         }

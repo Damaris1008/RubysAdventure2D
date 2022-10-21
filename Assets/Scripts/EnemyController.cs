@@ -17,12 +17,17 @@ public class EnemyController : MonoBehaviour
     bool broken = true;
     public ParticleSystem smokeEffect;
 
+    AudioSource audioSource;
+    public AudioClip fixedRobotAudio;
+    public AudioClip hitRobotAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = changeTime;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -63,7 +68,7 @@ public class EnemyController : MonoBehaviour
     {
         RubyController controller = other.gameObject.GetComponent<RubyController>();
 
-        if (controller != null)
+        if (controller != null && broken == true)
         {
             controller.ChangeHealth(-1);
         }
@@ -73,9 +78,12 @@ public class EnemyController : MonoBehaviour
     public void Fix()
     {
         broken = false;
-        //Setting rigidbody2D.simulated to false makes the system to take not into consideration the object for collisions
-        GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         animator.SetTrigger("Fixed");
+        audioSource.PlayOneShot(hitRobotAudio);
+        audioSource.clip = fixedRobotAudio;
+        audioSource.volume = 0.5f;
+        audioSource.Play();
         smokeEffect.Stop();
     }
 }
