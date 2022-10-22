@@ -344,6 +344,7 @@
 "Assets/Scripts/DamageZone.cs"
 "Assets/Scripts/EnemyController.cs"
 "Assets/Scripts/HealthCollectible.cs"
+"Assets/Scripts/MenuController.cs"
 "Assets/Scripts/Projectile.cs"
 "Assets/Scripts/RubyController.cs"
 "Assets/Scripts/UIHealthBar.cs"

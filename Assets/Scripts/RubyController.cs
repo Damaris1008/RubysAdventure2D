@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    //As this variable is public, it will appear in the Unity Inspector window of Ruby
     public float speed = 3.5f;
     
     public int maxHealth = 5;
@@ -29,17 +28,15 @@ public class RubyController : MonoBehaviour
     public AudioClip hitAudio;
     public AudioClip launchProjectileAudio;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
+        Time.timeScale = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
@@ -76,7 +73,7 @@ public class RubyController : MonoBehaviour
                 isInvincible = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             Launch();
         }
@@ -91,9 +88,7 @@ public class RubyController : MonoBehaviour
                 return;
                 
             animator.SetTrigger("Hit");
-            Debug.Log("hola");
             PlaySound(hitAudio, 1.0f);
-            Debug.Log("terminado");
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }

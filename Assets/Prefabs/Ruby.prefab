@@ -107,6 +107,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7383237534922529044, guid: ec1fc3a9c4f8dfd4d9a6571ba6812398, type: 3}
   hitAudio: {fileID: 8300000, guid: 9b1bb1f450b7d444fa4a8019d13519a7, type: 3}
   launchProjectileAudio: {fileID: 8300000, guid: b2edfd40873655249ba0e01a5cf705be, type: 3}
+  menu: {fileID: 890886726165448466, guid: 3c47506f8b170ac479e954fe5ee0317f, type: 3}
 --- !u!50 &3884956081359592231
 Rigidbody2D:
   serializedVersion: 4
